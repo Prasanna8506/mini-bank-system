@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Management · ATM</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand"><span class="brand-mark">A</span> ATM</div>
+    <nav class="nav">
+        <a href="/admin">Back</a>
+        <a href="/logout" class="logout">Logout</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="page-head">
+        <h2>User Management</h2>
+    </div>
+
+    <section class="card">
+        <div class="card-head">
+            <h3>Total Users</h3>
+            <span class="pill">{{total_users}}</span>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td class="muted mono">{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td class="muted">{{user.password}}</td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" name="user_id" value="{{user.id}}">
+                                <button type="submit" class="btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="4" class="empty">No users found</td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>

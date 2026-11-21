@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register · ATM</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="auth">
+
+<div class="auth-shell">
+
+    <div class="auth-brand">
+        <div class="brand-mark">ATM</div>
+        <div>
+            <h2>Register</h2>
+            <p>Create your account</p>
+        </div>
+    </div>
+
+    <div class="card auth-card">
+        <form method="post">
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Choose a username" autocomplete="username">
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Choose a password" autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="btn-block">Register</button>
+        </form>
+    </div>
+
+    <p class="auth-foot">Already have an account? <a href="/">Back to Login</a></p>
+
+</div>
+
+</body>
+</html>

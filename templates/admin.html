@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard · ATM</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand"><span class="brand-mark">A</span> ATM</div>
+    <nav class="nav">
+        <a href="/admin" class="active">Dashboard</a>
+        <a href="/admin/transactions">View Transactions</a>
+        <a href="/admin/users">Users</a>
+        <a href="/logout" class="logout">Logout</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="page-head">
+        <h2>Admin Dashboard</h2>
+    </div>
+
+    <section class="card">
+        <div class="card-head">
+            <h3>Users</h3>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Coins</th>
+                        <th>Add Coins</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td class="muted mono">{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td><span class="coins">{{user.coins}}</span></td>
+                        <td>
+                            <form method="post" class="inline-form compact">
+                                <input type="hidden" name="user_id" value="{{user.id}}">
+                                <input type="number" name="amount" placeholder="Amount" required>
+                                <button type="submit">Add</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="4" class="empty">No users found</td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
